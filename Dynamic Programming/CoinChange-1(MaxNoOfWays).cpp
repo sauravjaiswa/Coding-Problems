@@ -79,8 +79,8 @@ void printAll(int coins[],int sum,int n){
 }
 
 int main(){
-    int coins[]={2, 1, 5};
-    int sum=5;
+    int coins[]={2, 1};
+    int sum=2;
     int n=sizeof(coins)/sizeof(coins[0]);
 
     cout<<"Number of ways for change are? : "<<maxNoOfWays(coins,sum,n)<<"\n";

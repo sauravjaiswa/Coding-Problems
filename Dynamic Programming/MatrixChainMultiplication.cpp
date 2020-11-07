@@ -53,6 +53,35 @@ int matrixChainMultiplication(int a[],int n,int i,int j){
     return dp[i][j];
 }
 
+int mcmTopDown(int a[],int n){
+    int dp[n][n];
+    int i,j,k;
+
+
+    for(i=1;i<n;i++){
+        dp[i][i]=0;
+        if(i!=n-1)
+            dp[i][i+1]=a[i-1]*a[i]*a[i+1];
+    }
+
+    for(i=1;i<n;i++){
+        for(j=i+2;j<n;j++){
+            dp[i][j]=INT_MAX;
+            for(k=i;k<j;k++){
+                dp[i][j]=min(dp[i][j],dp[i][k]+dp[k+1][j]+(a[i-1]*a[k]*a[j]));
+            }
+        }
+    }
+
+    for(i=1;i<n;i++){
+        for(j=i;j<n;j++)
+            cout<<dp[i][j]<<" ";
+        cout<<"\n";
+    }
+
+    return dp[1][n-1];
+}
+
 
 int main(){
     //{30,35,15,5,10,20,3};//{40, 20, 30, 10, 30};
@@ -68,4 +97,5 @@ int main(){
     memset(dp,-1,sizeof(dp));
 
     cout<<"Minimum cost of MCM: "<<matrixChainMultiplication(a,n,1,n-1)<<"\n";
+    cout<<"Minimum cost of MCM Top Down: "<<mcmTopDown(a,n)<<"\n";
 }
