@@ -26,18 +26,19 @@ int main(){
                 posmax=i;
             }
         }
-        if(sum%(n-1)==0)
-            cout<<0<<"\n";
-        else{
-            float temp=ceil((float)sum/(n-1));
-
-            int t=(int)temp;
+//        if(sum%(n-1)==0)
+//            cout<<0<<"\n";
+//        else{
+//            float temp=ceil((float)sum/(n-1));
+//
+//            int t=(int)temp;
 //            cout<<"TEMP:"<<t<<"\n";
 //            cout<<"SUM:"<<sum<<"\n";
-            int ans=abs(t-maxi);
+            int k=max((int)ceil(sum)/(n-1),maxi);
 
+            int ans=(n-1)*k-sum;
             cout<<ans<<"\n";
-        }
+        //}
     }
 
     return 0;
