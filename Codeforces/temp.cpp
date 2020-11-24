@@ -4,16 +4,6 @@
 #define lli long long int
 using namespace std;
 
-int lcs(string s1,string s2,int m,int n)
-{
-	if(m==0||n==0)
-		return 0;
-	if (s1[m-1]==s2[n-1])
-		return 1+lcs(s1,s2,m-1,n-1);
-	else
-		return max(lcs(s1,s2,m,n-1),lcs(s1,s2,m-1,n));
-}
-
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -33,22 +23,65 @@ int main(){
             f=0;
             refer="";
 
-            for(j=l-1;j<=r-1;j++)
+            if(l-1!=0&&r!=n){
+                cout<<"YES\n";
+            }else{
+                for(j=l-1;j<=r-1;j++)
                 refer+=s[j];
 
-            for(j=l-1;j<=r-1;j++){
-                ns=s;
-                ns[j]='X';
+                char first=refer[0];
+                char last=refer[refer.length()-1];
+                int f1,f2;
+                f1=f2=0;
 
-                if(lcs(ns,refer,ns.length(),refer.length())==refer.length()){
-                    f=1;
+                for(j=l-2;j>=0;j--){
+                    if(first==s[j]){
+                        f1=1;
+                        break;
+                    }
+                }
+
+                for(j=r;j<n;j++){
+                    if(last==s[j]){
+                        f2=1;
+                        break;
+                    }
+                }
+
+                //cout<<f1<<" "<<f2<<"\n";
+                if(f1==1&&f2==1)
+                    cout<<"YES\n";
+                else
+                    cout<<"NO\n";
+            }
+
+            /*for(j=l-1;j<=r-1;j++)
+                refer+=s[j];
+
+            char first=refer[0];
+            char last=refer[refer.length()-1];
+            int f1,f2;
+            f1=f2=0;
+
+            for(j=l-2;j>=0;j--){
+                if(first==s[j]){
+                    f1=1;
                     break;
                 }
             }
-            if(f==1)
+
+            for(j=r;j<n;j++){
+                if(last==s[j]){
+                    f2=1;
+                    break;
+                }
+            }
+
+            cout<<f1<<" "<<f2<<"\n";
+            if(f1==1&&f2==1)
                 cout<<"YES\n";
             else
-                cout<<"NO\n";
+                cout<<"NO\n";*/
         }
     }
 
