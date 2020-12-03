@@ -193,3 +193,92 @@ int main(){
 
     return 0;
 }
+
+
+
+
+/*Manish ka code
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define pb push_back
+#define endl "\n"
+ll mod=1000000007;
+#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+int n;
+int arr[1009][1009];
+int cnt=0;
+int p=1009,q=1009;
+bool vis[1009][1009];
+int dx[]={1,-1,0,0};
+int dy[]={0,0,1,-1};
+bool valid(int x,int y)
+{
+    return (x>=0 && y>=0 && x<n && y<n);
+}
+void dfs(int x,int y)
+{
+    cnt++;
+    vis[x][y]=1;
+    if(p==1009)
+        p=x,q=y;
+    else
+    {
+        if(x<p)
+            p=x,q=y;
+        else if(x==p)
+        {
+            q=min(q,y);
+        }
+    }
+    for(int i=0;i<4;i++)
+    {
+        int xx=x+dx[i];
+        int yy=y+dy[i];
+        if(valid(xx,yy) && !vis[xx][yy] && arr[xx][yy]==1)
+            dfs(xx,yy);
+    }
+}
+int main()
+{
+    IOS;
+
+
+    ll t;cin>>t;while(t--)
+    {
+        memset(vis,0,sizeof vis);
+        p=q=1009;
+        cnt=0;
+        ll a,b,c,d,i,j,k,l,m,sum=0,temp=0,f=0;
+        cin>>n;
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+                cin>>arr[i][j];
+        }
+        cin>>k;
+        int pos[109][2];
+        for(i=0;i<109;i++)
+            pos[i][0]=pos[i][1]=-1;
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                if(arr[i][j]==1 && vis[i][j]==0)
+                {
+                    p=1009;
+                    q=1009;
+                    cnt=0;
+                    dfs(i,j);
+                    //cout<<"yo "<<cnt<<" "<<p<< " "<<q<<endl;
+
+                    pos[cnt][0]=p;
+                    pos[cnt][1]=q;
+                }
+
+            }
+        }
+        cout<<pos[k][0]<<" "<<pos[k][1]<<endl;
+
+    }
+}*/
