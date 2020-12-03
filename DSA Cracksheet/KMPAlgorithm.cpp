@@ -46,7 +46,9 @@ void kmpSearch(string txt,string pattern,int lps[]){
 
 int main(){
     string txt,pattern;
+    cout<<"Enter a text:\n";
     cin>>txt;
+    cout<<"Enter a pattern to be searched in the text:\n";
     cin>>pattern;
 
     int lps[pattern.length()]={-1};

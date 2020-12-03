@@ -1,7 +1,16 @@
-//Ping Pong
+//Sequence and Swaps
 
 #include<bits/stdc++.h>
 using namespace std;
+
+bool isSorted(int a[],int n){
+    int i;
+    for(i=n-1;i>0;i--){
+        if(a[i]<a[i-1])
+            return false;
+    }
+    return true;
+}
 
 int main(){
 	ios_base::sync_with_stdio(false);
@@ -12,31 +21,26 @@ int main(){
 	while(t--){
         int n,x;
         cin>>n>>x;
-        int a[n],i;
+        int a[n],i,cnt=0;
 
         for(i=0;i<n;i++)
             cin>>a[i];
 
-        int f=0;
-        int pairs=0,mini=INT_MAX;
-        for(i=0;i<n-1;i++){
-            if(a[i]>a[i+1]){
-                pairs++;
+        while(!isSorted(a,n)){
+            cnt++;
+            i=0;
+            while(i<n&&a[i]<=x)
+                i++;
 
-                if((a[i]>=x&&x>a[i+1])||(a[i]<x)){
-                    f=-1;
-                    break;
-                }
+            if(i==n){
+                cnt=-1;
+                break;
+            }else{
+                int t=x;
+                x=a[i];
+                a[i]=t;
             }
         }
-
-        if(f!=0)
-            cout<<f<<"\n";
-        else{
-            if(pairs==0)
-                cout<<pairs<<"\n";
-            else
-                cout<<n-pairs<<"\n";
-        }
+        cout<<cnt<<"\n";
 	}
 }
