@@ -1,7 +1,5 @@
 //Errich-Tac-Toe (Easy Version)
 
-//Avoid Trygub
-
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -21,17 +19,27 @@ int main(){
                 cin>>a[i][j];
         }
 
-        int cntX=0;
+        int cntX[3]={0};
         for(i=0;i<n;i++){
             for(j=0;j<n;j++){
-                if(a[i][j]=='.')
-                    cntX=0;
-                else if(a[i][j]=='X')
-                    cntX++;
+                if(a[i][j]=='X'){
+                    cntX[(i+j)%3]++;
+                }
+            }
+        }
 
-                if(cntX==3){
+        int mini=INT_MAX,minipos=-1;
+        for(i=0;i<3;i++){
+            if(cntX[i]<mini){
+                mini=cntX[i];
+                minipos=i;
+            }
+        }
+
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                if((i+j)%3==minipos&&a[i][j]=='X'){
                     a[i][j]='O';
-                    cntX=0;
                 }
             }
         }
