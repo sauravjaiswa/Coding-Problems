@@ -1,4 +1,4 @@
-//Close Tuples (easy version)
+//Close Tuples (hard version)
 
 #include<bits/stdc++.h>
 #define lli long long int
@@ -11,8 +11,8 @@ int main(){
 	lli t;
 	cin>>t;
     while(t--){
-        lli i,j,n,ans=0;
-        cin>>n;
+        lli i,j,n,k,m,ans=0;
+        cin>>n>>k>>m;
         vector<lli> v(n);
 
         for(i=0;i<n;i++){
@@ -22,18 +22,13 @@ int main(){
 
         for(i=0;i<n;i++){
             lli t1=v[i];
-            lli t2=v[i]+2;
+            lli t2=v[i]+m;
 
             lli pos=upper_bound(v.begin(),v.end(),t2)-v.begin();
             pos=pos-1;
 
             //if(pos>i)
-            ans=ans+(((pos-i-1)*(pos-i))/2);
-            cout<<"TEST CASE : "<<t<<"\n";
-            cout<<"pos POSITION : "<<pos<<"\n";
-            cout<<"i POSITION : "<<i<<"\n";
-            cout<<"CHECK : "<<ans<<"\n";
-
+                ans=ans+(((pos-i-1)*(pos-i))/2);
         }
 
         cout<<ans<<"\n";
