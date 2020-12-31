@@ -35,10 +35,11 @@ void mirror(Node* root){
     if(root==NULL)
         return;
 
-    mirror(root->left);
     Node* temp=(root->left!=NULL)?root->left:NULL;
     root->left=(root->right!=NULL)?root->right:NULL;
     root->right=temp;
+
+    mirror(root->left);
     mirror(root->right);
 }
 
