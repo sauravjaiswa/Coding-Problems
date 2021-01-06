@@ -62,3 +62,14 @@ int main(){
 
     return 0;
 }
+
+/*Node* buildTree(Node* root, int arr[], int i, int n) {
+    if (i>=n || arr[i] == 0) {
+        return NULL;
+    }
+    root = new Node(arr[i]);
+    root->left = buildTree(root->left, arr, i*2 + 1, n);
+    root->right = buildTree(root->right, arr, i*2 + 2, n);
+
+    return root;
+}*/
