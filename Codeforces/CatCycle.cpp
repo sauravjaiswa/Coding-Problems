@@ -10,38 +10,44 @@ int main(){
     cin.tie(NULL);
     lli t;
     cin>>t;
+
     while(t--){
-        lli n,k,c1,c2;
+        lli n,k,c1,c2,mid;
         cin>>n>>k;
-        lli i,a[k];
-        c1=n;
-        c2=1;
-
-        for(i=0;i<k;i++){
-            if(c1!=c2){
-                a[i]=c2;
+        
+        if(n%2==0){
+            if(k<=n){
+                cout<<k<<"\n";
             }else{
-                while(c2==c1){
-                    c2++;
-
-                    if(c2==n+1)
-                        c2=1;
-                }
-
-                a[i]=c2;
-            }
-            c1--;
-            c2++;
-
-            if(c1==0){
-                c1=n;
-            }
-            if(c2==n+1){
-                c2=1;
+                cout<<k%n<<"\n";
             }
         }
+        else{
+            
+            lli a[k+1],i;
+            mid=(lli)ceil(n/2);
 
-        cout<<a[k-1]<<"\n";
+            i=1;
+            c1=1;
+            while(i<k){
+                c1=(c1+mid)%n;
+                i+=mid;
+            }
+
+            if(i==k){
+                cout<<c1<<"\n";
+            }else{
+                
+                while(i!=k){
+                    c1=c1-1;
+                    i--;
+                }
+
+                cout<<c1-1<<"\n";
+
+            }
+            
+        }
     }
 
     return 0;
