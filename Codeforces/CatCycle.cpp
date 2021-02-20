@@ -12,41 +12,18 @@ int main(){
     cin>>t;
 
     while(t--){
-        lli n,k,c1,c2,mid;
+        lli n,k,mid;
         cin>>n>>k;
-        
+        k--;
         if(n%2==0){
-            if(k<=n){
-                cout<<k<<"\n";
-            }else{
-                cout<<k%n<<"\n";
-            }
+            cout<<k%n+1<<"\n";
         }
         else{
             
-            lli a[k+1],i;
-            mid=(lli)ceil(n/2);
-
-            i=1;
-            c1=1;
-            while(i<k){
-                c1=(c1+mid)%n;
-                i+=mid;
-            }
-
-            if(i==k){
-                cout<<c1<<"\n";
-            }else{
-                
-                while(i!=k){
-                    c1=c1-1;
-                    i--;
-                }
-
-                cout<<c1-1<<"\n";
-
-            }
-            
+            lli ans;
+            mid=n/2;
+            ans=((k/mid)+k)%n;
+            cout<<ans+1<<"\n";
         }
     }
 
