@@ -21,11 +21,10 @@ int main(){
 
         int cnt1=0,cnt2=0;
         for(i=0;i<n;i++){
-            for(j=0;j<n;j++){
-                if(r[i]>b[j])
-                    cnt1++;
-                else if(r[i]<b[j])
-                    cnt2++;
+            if(r[i]>b[i]){
+                cnt1++;
+            }else if(r[i]<b[i]){
+                cnt2++;
             }
         }
 
