@@ -19,8 +19,14 @@ int main(){
             cin>>a[i];
 
         for(i=0;i<n-1;i++){
-            if(max(a[i],a[i+1])>(2*min(a[i],a[i+1])))
+
+            lli b=min(a[i],a[i+1]);
+            lli c=max(a[i],a[i+1]);
+
+            while((b*2)<c){
+                b=b*2;
                 cnt++;
+            }
         }
 
         cout<<cnt<<"\n";
