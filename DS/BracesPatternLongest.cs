@@ -48,31 +48,49 @@ public class HelloWorld
     
     private static void CalculateLongestPattern(string input)
     {
-        var start = 0;
-        var curr = 0;
+        var seqCnt = 0;
+        var totalCnt = 0;
         var maxi = 0;
-        
         foreach(var ch in input){
             if(ch == '('){
-                start++;
-                curr++;
+                seqCnt++;
             }
-            else if (ch == ')') {
-                if(start > 0){
-                    start--;
-                    curr++;
+            else{
+                seqCnt--;
+            }
+            if(seqCnt >= 0){
+                totalCnt++;
+                if(seqCnt == 0){
+                    maxi = Math.Max(maxi, totalCnt);
                 }
-                else {
-                    maxi = Math.Max(maxi, curr);
-                    curr = 0;
-                    start = 0;
-                }
+            }
+            else{
+                totalCnt = 0;
+                seqCnt = 0;
             }
         }
-        
-        if(start > 0 && maxi == 0)
-        {
-            maxi = input.Length - start;
+
+        seqCnt = 0;
+        totalCnt = 0;
+        for(var i = input.Length - 1; i >= 0; i--){
+            var ch = input[i];
+            if(ch == ')'){
+                seqCnt++;
+            }
+            else{
+                seqCnt--;
+            }
+
+            if(seqCnt >= 0){
+                totalCnt++;
+                if(seqCnt == 0){
+                    maxi = Math.Max(maxi, totalCnt);
+                }
+            }
+            else{
+                totalCnt = 0;
+                seqCnt = 0;
+            }
         }
         
         Console.WriteLine("OUTPUT: " + maxi);
