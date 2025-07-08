@@ -1,0 +1,9 @@
+Aditya Verma DP => https://www.youtube.com/watch?v=jkygQmOiCCI
+// https://www.geeksforgeeks.org/interview-experiences/goldman-sachs-interview-preparation/
+
+
+// 0-1 Knapsack -> https://www.geeksforgeeks.org/dsa/0-1-knapsack-problem-dp-10/#problems-based-on-01-knapsack
+
+// Graph -> https://www.geeksforgeeks.org/dsa/dijkstras-shortest-path-algorithm-greedy-algo-7/
+
+// Backtracking -> https://www.youtube.com/watch?v=R8XzIfEY_xE&list=PL_z_8CaSLPWdbOTog8Jxk9XOjzUs3egMP
